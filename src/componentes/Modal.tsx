@@ -114,7 +114,7 @@ class Modal extends Component<props>{
         }).catch((err) => {
             //Definindo texto e titulo do modal se houver algum erro.
             headerTitle.textContent = "Recibo de pagamento";
-            document.getElementsByClassName("modalBody")[0].innerHTML = '<p class="paymentStatus">O pagamento <strong>não</strong> foi concluido com sucesso.</p>';
+            document.getElementsByClassName("modalBody")[0].innerHTML = '<p class="paymentStatus">O pagamento <strong>não</strong> foi concluido com sucesso.</p>'
         });
     }
 
@@ -144,14 +144,14 @@ class Modal extends Component<props>{
                     {/* Criando menu de seleção dos cartões. */}
                     <select name="creditCards" id="creditCards">
                         {
-                            //Utiliznado o objeto cards para definir as options do select.
+                            //Utilizando o objeto cards para definir as options do select.
                             cards.map((card, index) => {
                                 return (
                                     //Definindo um parametro "data-key" com o index do objeto e criando texto com os 4 números finais do cartão.
-                                    <option data-key={index} key={index} value={card.card_number}>{`Cartão com final ${card.card_number.slice(card.card_number.length - 4)}`}</option>
+                                    <option data-key={index} key={index} value={card.card_number}>{`Cartão com final ${card.card_number.slice(card.card_number.length -4)}`}</option>
                                 )
                             })
-                        }
+                        };
                     </select>
                     <button onClick={() => {
                         //Botão de pagar usuário
@@ -162,7 +162,7 @@ class Modal extends Component<props>{
                         //Verificando se existe mais que 1 digito no número, para evitar que pague centavos em vez de unidades de reais.
                         if (valueToPay.length > 1) {
                             //se for maior que um, adicione "." antes dos dois ultimos números para definir os centavos
-                            finalValue = Number(valueToPay.substring(0, valueToPay.length - 2) + "." + valueToPay.substring(valueToPay.length - 2));
+                            finalValue = Number(valueToPay.substring(0, valueToPay.length -2) + "." + valueToPay.substring(valueToPay.length -2));
                         } else {
                             //Se não, pague apenas as unidades de reais;
                             finalValue = Number(valueToPay);
@@ -173,7 +173,7 @@ class Modal extends Component<props>{
                         let card_index = Number(selectElement.options[selectElement.selectedIndex].getAttribute("data-key"));
                         if (finalValue) {
                             //Se houver algum número no input, chama a função de pagamento.
-                            this.payUser(this.props.user_id, finalValue, card_index)
+                            this.payUser(this.props.user_id, finalValue, card_index);
                         } else {
                             //Se não, foca no campo do input.
                             document.getElementsByTagName('input')[0].focus();
