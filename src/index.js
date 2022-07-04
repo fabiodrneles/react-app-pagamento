@@ -1,8 +1,10 @@
-import ReactDOM from 'react-dom';
-import Lista from './componentes/Lista';
-import './css/index.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-ReactDOM.render(
-    <Lista></Lista>,
-  document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
